@@ -7,6 +7,10 @@ import configs from 'ormconfig';
 import { Users } from './entities/users.entity';
 import { ConfigModule } from '@nestjs/config';
 import { config } from 'dotenv';
+import { Participants } from './entities/participants.entity';
+import { Messages } from './entities/message.entity';
+import { Conversation } from './entities/conversation.entity';
+import { AppGateway } from './app/app.gateway';
 config();
 
 @Module({
@@ -20,12 +24,12 @@ config();
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [Users],
+      entities: [Users, Messages, Conversation, Participants],
       synchronize: true,
     }),
     ConfigModule.forRoot(),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AppGateway],
 })
 export class AppModule {}

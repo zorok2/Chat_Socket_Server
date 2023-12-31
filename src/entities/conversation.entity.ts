@@ -20,7 +20,7 @@ export class Conversation {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createAt: Date;
 
-  @ManyToOne(() => Users, (user) => user.id)
+  @ManyToOne(() => Users, (user) => user.conversations)
   @JoinColumn({ name: 'creator' })
   creator: Users;
 

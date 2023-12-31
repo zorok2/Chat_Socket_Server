@@ -7,9 +7,9 @@ export class Participants {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Users, user => user.id)
+  @ManyToOne(() => Users, (user) => user.id)
   userId: Users;
 
-  @ManyToOne(() => Conversation, conversation => conversation.id)
+  @ManyToOne(() => Conversation, (conversation) => conversation.id)
   conversationId: Conversation;
 }

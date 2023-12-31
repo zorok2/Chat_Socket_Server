@@ -15,20 +15,19 @@ export class Messages {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Users, (user) => user.id)
+  @ManyToOne(() => Users, (user) => user.messages)
   @JoinColumn({ name: 'senderId' })
   senderId: Users;
 
-  @ManyToOne(() => Conversation, (conversation) => conversation.id)
+  @ManyToOne(() => Conversation, (conversation) => conversation.messages)
   @JoinColumn({ name: 'conversationId' })
   conversation: Conversation;
 
-  @ManyToOne(() => Attachments, (attachment) => attachment.id, {
-    nullable: true,
-  })
-  @JoinColumn({ name: 'attachmentId' })
-  attachmentId: Attachments;
-
+  // @ManyToOne(() => Attachments, (attachment) => attachment.id, {
+  //   nullable: true,
+  // })
+  // @JoinColumn({ name: 'attachmentId' })
+  // attachmentId: Attachments;
   @Column()
   content: string;
 
