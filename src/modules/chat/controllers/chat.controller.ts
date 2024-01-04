@@ -5,13 +5,13 @@ import { ChatService } from '../services/chat.service';
 export class ChatController {
   constructor(private readonly chatService: ChatService) {}
 
-  @Get('messages')
+  @Get('')
   async getMessages() {
-    return this.chatService.getMessages();
+    return 'nghia dep trai';
   }
 
-  @Post('messages')
-  async createMessage(@Body() data: { content: string; senderId: number }) {
-    return this.chatService.createMessage(data.content, data.senderId);
-  }
+  // @Post('messages')
+  // async createMessage(@Body() data: { content: string; senderId: number }) {
+  //   return this.chatService.createMessage(data.content, data.senderId);
+  // }
 }

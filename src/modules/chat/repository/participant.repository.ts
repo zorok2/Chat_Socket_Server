@@ -14,12 +14,12 @@ export class ParticipantsRepository {
     return this.participantsRepository.save(participant);
   }
 
-  async update(id: number, participant: Participants): Promise<Participants> {
+  async update(id: string, participant: Participants): Promise<Participants> {
     await this.participantsRepository.update(id, participant);
     return this.participantsRepository.findOne({ where: { id: id } });
   }
 
-  async remove(id: number): Promise<void> {
+  async remove(id: string): Promise<void> {
     await this.participantsRepository.delete(id);
   }
 }
