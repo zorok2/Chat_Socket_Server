@@ -3,7 +3,7 @@ import { MessagesRepository } from "./message.repository";
 import { ParticipantsRepository } from "./participant.repository";
 import { UsersRepository } from "./user.repository";
 
-export const reppositories =[
+export const repositories =[
     ConversationRepository,
     MessagesRepository,
     ParticipantsRepository,

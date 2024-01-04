@@ -13,7 +13,7 @@ import { Attachments } from './attachments.entity';
 @Entity()
 export class Messages {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: string;
 
   @ManyToOne(() => Users, (user) => user.messages)
   @JoinColumn({ name: 'senderId' })

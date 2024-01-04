@@ -10,12 +10,13 @@ import { config } from 'dotenv';
 import { Participants } from './entities/participants.entity';
 import { Messages } from './entities/message.entity';
 import { Conversation } from './entities/conversation.entity';
-import { AppGateway } from './app/app.gateway';
+import { AppGateway } from './modules/chat/app.gateway';
 config();
 
 @Module({
   imports: [
     ChatModule,
+
     TypeOrmModule.forRoot({
       // Cấu hình kết nối
       type: 'postgres',

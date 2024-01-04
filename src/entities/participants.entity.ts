@@ -5,7 +5,7 @@ import { Conversation } from './conversation.entity';
 @Entity()
 export class Participants {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: string;
 
   @ManyToOne(() => Users, (user) => user.id)
   userId: Users;

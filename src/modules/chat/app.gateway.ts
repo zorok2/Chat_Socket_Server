@@ -20,7 +20,11 @@ export class AppGateway
   @WebSocketServer() server: Server;
   constructor(private appService: AppService) {}
 
-
+  @SubscribeMessage('message')
+  async handleMessage(client: any, payload: any): Promise<void> {
+    // await this.appService.createMessage(payload);
+    this.server.emit('recMessage', payload);
+  }
   
   afterInit(server: any) {
     console.log(server);
@@ -30,10 +34,5 @@ export class AppGateway
   }
   handleDisconnect(client: any) {
     console.log(`Disconnected: ${client.id}`);
-  }
-  @SubscribeMessage('message')
-  async handleMessage(client: any, payload: any): Promise<void> {
-    // await this.appService.createMessage(payload);
-    this.server.emit('recMessage', payload);
   }
 }

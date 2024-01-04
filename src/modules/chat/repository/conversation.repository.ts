@@ -9,17 +9,23 @@ export class ConversationRepository {
     @InjectRepository(Conversation)
     private conversationRepository: Repository<Conversation>,
   ) {}
+  async findAll() {
+    return this.conversationRepository.find();
+  }
+  async findOne(id) {
+    return this.conversationRepository.findOne({ where: { id: id } });
+  }
 
   async create(conversation: Conversation): Promise<Conversation> {
     return this.conversationRepository.save(conversation);
   }
 
-  async update(id: number, conversation: Conversation): Promise<Conversation> {
+  async update(id: string, conversation: Conversation): Promise<Conversation> {
     await this.conversationRepository.update(id, conversation);
     return this.conversationRepository.findOne({ where: { id: id } });
   }
 
-  async remove(id: number): Promise<void> {
+  async remove(id: string): Promise<void> {
     await this.conversationRepository.delete(id);
   }
 }

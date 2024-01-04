@@ -7,15 +7,7 @@ export class ChatController {
 
   @Get('messages')
   async getMessages() {
-
-
-
-    return this.chatService.getMessages(
-
-
-
-      
-    );
+    return this.chatService.getMessages();
   }
 
   @Post('messages')
