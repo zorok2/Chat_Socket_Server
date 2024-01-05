@@ -4,8 +4,8 @@ import { Repository } from 'typeorm';
 import { MessagesRepository } from '../repository/message.repository';
 import { Messages } from 'src/entities/message.entity';
 import { CreateMessageDto } from '../dto/createMessageDto.dto';
-import { UsersRepository } from '../repository/user.repository';
 import { ConversationRepository } from '../repository/conversation.repository';
+import { UsersRepository } from 'src/modules/users/repositories/user.repository';
 
 @Injectable()
 export class MessagesService {

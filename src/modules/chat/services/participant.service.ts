@@ -3,8 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Participants } from 'src/entities/participants.entity';
 import { Repository } from 'typeorm';
 import { CreateParticipantDto } from '../dto/CreateParticipantDto.dto';
-import { UsersRepository } from '../repository/user.repository';
 import { ConversationRepository } from '../repository/conversation.repository';
+import { UsersRepository } from 'src/modules/users/repositories/user.repository';
 
 @Injectable()
 export class ParticipantsService {

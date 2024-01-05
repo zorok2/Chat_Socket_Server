@@ -1,4 +1,6 @@
 import {
+  ConnectedSocket,
+  MessageBody,
   OnGatewayConnection,
   OnGatewayDisconnect,
   OnGatewayInit,
@@ -6,6 +8,7 @@ import {
   WebSocketGateway,
   WebSocketServer,
 } from '@nestjs/websockets';
+import { Socket } from 'dgram';
 import { Server } from 'socket.io';
 import { AppService } from 'src/app.service';
 
@@ -21,11 +24,21 @@ export class AppGateway
   constructor(private appService: AppService) {}
 
   @SubscribeMessage('message')
-  async handleMessage(client: any, payload: any): Promise<void> {
-    // await this.appService.createMessage(payload);
-    this.server.emit('recMessage', payload);
+  async handleMessage(
+    @ConnectedSocket() client: Socket,
+    @MessageBody()
+    data: { senderId: number; receiverId: number; content: string },
+  ): Promise<void> {
+    // const message = this.chatService.createMessage(data.senderId, data.receiverId, data.content);
+    // this.server.to(`user_${data.receiverId}`).emit('message', message);
   }
-  
+
+  @SubscribeMessage('joinRoom')
+  handleJoinRoom(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() userId: number,
+  ): void {}
+
   afterInit(server: any) {
     console.log(server);
   }

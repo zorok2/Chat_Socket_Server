@@ -1,3 +1,4 @@
+import { UserModule } from './modules/users/user.module';
 import { ChatModule } from './modules/chat/chat.module';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
@@ -15,8 +16,8 @@ config();
 
 @Module({
   imports: [
+    UserModule,
     ChatModule,
-
     TypeOrmModule.forRoot({
       // Cấu hình kết nối
       type: 'postgres',
